@@ -11,6 +11,7 @@ pipeline {
                 sh '''
                     node --version
                     echo "Hello from stage test"
+                    ls -la
                 '''
             }
         }
