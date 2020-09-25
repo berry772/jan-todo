@@ -1,21 +1,11 @@
 pipeline {
-    options {
-        timeout(time: 1, unit: 'HOURS')
-    }
     agent {
-        label 'ubuntu-1804 && amd64 && docker'
+        docker { image 'node:14-alpine' }
     }
     stages {
-        stage('build and push') {
-            when {
-                branch 'master'
-            }
-            sh "docker build -t docker/getting-started ."
-
+        stage('Test') {
             steps {
-                withDockerRegistry([url: "", credentialsId: "dockerbuildbot-index.docker.io"]) {
-                    sh("docker push docker/getting-started")
-                }
+                sh 'node --version'
             }
         }
     }
