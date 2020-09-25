@@ -15,13 +15,11 @@ pipeline {
                 '''
             }
         }
-        stage('Cloning Git') {
-            steps {
-                git 'https://github.com/berry772/jan-todo.git'
-            }
-        }
         stage('Building Image') {
             steps {
+                sh '''
+                    ls -la
+                '''
                 script {
                     dockerImage = docker.build registry + ":$BUILD_NUMBER"
                 }
