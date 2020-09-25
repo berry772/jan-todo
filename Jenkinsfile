@@ -20,6 +20,7 @@ pipeline {
                 sh '''
                     ls -la
                     cat Dockerfile
+                    docker ps -a
                 '''
                 script {
                     dockerImage = docker.build registry + ":$BUILD_NUMBER"
