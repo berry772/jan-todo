@@ -16,7 +16,9 @@ pipeline {
     stage('Building Image') {
       steps {
         script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+          checkout scm
+          def customImage = docker.build("${registry}${BUILD_NUMBER}:${env.BUILD_ID}")
+          customImage.push()
         }
 
       }
