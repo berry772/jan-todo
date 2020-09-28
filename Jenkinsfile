@@ -8,11 +8,11 @@ pipeline {
                   cat Dockerfile
                   docker images
                 '''
-            }
-            script {
-                checkout scm
-                def customImage = docker.build("${registry}${BUILD_NUMBER}:${env.BUILD_ID}")
-                customImage.push()
+                script {
+                    checkout scm
+                    def customImage = docker.build("${registry}${BUILD_NUMBER}:${env.BUILD_ID}")
+                    customImage.push()
+                }
             }
         }
     }
