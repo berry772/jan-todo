@@ -12,6 +12,10 @@ pipeline {
                   cat Dockerfile
                   docker images
                 '''
+            }
+        }
+        stage('Build') {
+            steps {
                 script {
                     def dockerImage = docker.build(registry + ":${env.BUILD_ID}")
                     docker.withRegistry( '', registryCredential ) {
