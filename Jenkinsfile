@@ -1,6 +1,7 @@
 pipeline {
   agent none
-  stages {
+  node {
+    stages {
     stage('Test') {
       steps {
         sh '''
@@ -23,6 +24,8 @@ pipeline {
         }
       }
     }
+  }
+  
   }
   environment {
     registry = 'berry772/jan-todo'
