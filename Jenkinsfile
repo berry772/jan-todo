@@ -9,7 +9,6 @@ pipeline {
                   docker images
                 '''
                 script {
-                    checkout scm
                     def customImage = docker.build("${registry}${BUILD_NUMBER}:${env.BUILD_ID}")
                     customImage.push()
                 }
