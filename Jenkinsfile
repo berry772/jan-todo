@@ -6,7 +6,7 @@ pipeline {
                 sh '''
                   ls -la
                   cat Dockerfile
-                  docker ps
+                  docker images
                 '''
             }
         }
