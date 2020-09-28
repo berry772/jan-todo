@@ -1,4 +1,7 @@
 pipeline {
+    environment {
+        registry = 'berry772/jan-todo'
+    }
     agent any
     stages {
         stage('Test') {
