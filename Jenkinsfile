@@ -13,7 +13,7 @@ pipeline {
                   docker images
                 '''
                 script {
-                    def customImage = docker.build("${registry}${BUILD_NUMBER}:${env.BUILD_ID}")
+                    def dockerImage = docker.build("${registry}${BUILD_NUMBER}:${env.BUILD_ID}")
                     docker.withRegistry( '', registryCredential ) {
                         dockerImage.push()
                     }
