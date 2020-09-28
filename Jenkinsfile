@@ -16,6 +16,7 @@ pipeline {
                     def dockerImage = docker.build(registry + ":${env.BUILD_ID}")
                     docker.withRegistry( '', registryCredential ) {
                         dockerImage.push()
+                        dockerImage.push('latest')
                     }
                 }
             }
