@@ -28,7 +28,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    ecs.withCredential('aws') {
+                    withCredentials('aws') {
                         echo 'tttttttttttttttttttttttt'
                     }
                 }
