@@ -18,17 +18,17 @@ pipeline {
             steps {
                 script {
                     def dockerImage = docker.build(registry + ":${env.BUILD_ID}")
-                    docker.withRegistry( '', registryCredential ) {
+                    /* docker.withRegistry( '', registryCredential ) {
                         dockerImage.push()
                         dockerImage.push('latest')
-                    }
+                    } */
                 }
             }
         }
         stage('Deploy') {
             steps {
                 script {
-                    aws.withRegistry('','aws') {
+                    withCredential('aws') {
                         echo 'tttttttttttttttttttttttt'
                     }
                 }
