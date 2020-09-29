@@ -29,7 +29,6 @@ pipeline {
             steps {
                 script {
                     aws ecs --help
-                    }
                 }
             }
         }
