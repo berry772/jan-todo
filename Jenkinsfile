@@ -9,7 +9,7 @@ pipeline {
             steps {
                 sh '''
                   ls -la
-                  cat Dockerfile
+                  cat Jenkinsfile
                   docker images
                 '''
             }
