@@ -25,5 +25,13 @@ pipeline {
                 }
             }
         }
+        stage('Build') {
+            steps {
+                script {
+                    aws ecs --help
+                    }
+                }
+            }
+        }
     }
 }
