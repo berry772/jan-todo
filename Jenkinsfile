@@ -18,10 +18,8 @@ pipeline {
             steps {
                 script {
                     def dockerImage = docker.build(registry + "-a:${env.BUILD_ID}")
-                    docker.withRegistry( '', registryCredential ) {
-                        dockerImage.push()
-                        dockerImage.push('latest')
-                    }
+                    dockerImage.push()
+                    dockerImage.push('latest')
                 }
             }
         }
