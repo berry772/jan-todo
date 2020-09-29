@@ -1,7 +1,7 @@
 pipeline {
     environment {
         registry = 'berry772/jan-todo'
-        registryCredential = 'dockerhub-t'
+        registryCredential = 'dockerhub'
     }
     agent any
     stages {
