@@ -2,6 +2,9 @@ pipeline {
     environment {
         registry = 'berry772/jan-todo-a'
         registryCredential = 'dockerhub'
+        AWS_ID = credentials('aws')
+        AWS_ACCESS_KEY_ID = "${env.AWS_ID_USR}"
+        AWS_SECRET_ACCESS_KEY = "${env.AWS_ID_PSW}"
     }
     agent any
     stages {
@@ -28,14 +31,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    withCredentials([[
-                        $class: 'AmazonWebServicesCredentialsBinding',
-                        credentialsId: 'aws',
-                        accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                        secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-                        ]]) {
-                        echo 'AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}'
-                    } 
+                    echo 'AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}'
                 }
             }
         }
