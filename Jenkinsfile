@@ -10,7 +10,7 @@ pipeline {
                 sh '''
                   ls -la
                   cat Jenkinsfile
-                  docker images
+                  docker image prune -f
                 '''
             }
         }
