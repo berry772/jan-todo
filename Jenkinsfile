@@ -1,7 +1,7 @@
 pipeline {
     environment {
         registry = 'berry772/jan-todo'
-        registryCredential = 'dockerhub'
+        registryCredential = 'dockerhub-t'
     }
     agent any
     stages {
@@ -18,8 +18,10 @@ pipeline {
             steps {
                 script {
                     def dockerImage = docker.build(registry + "-a:${env.BUILD_ID}")
-                    dockerImage.push()
-                    dockerImage.push('latest')
+                    docker.withRegistry( '', registryCredential ) {
+                        dockerImage.push()
+                        dockerImage.push('latest')
+                    }
                 }
             }
         }
