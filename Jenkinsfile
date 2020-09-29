@@ -28,7 +28,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    AWS --help
+                    AWS
                 }
             }
         }
