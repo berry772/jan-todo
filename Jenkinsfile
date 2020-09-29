@@ -28,7 +28,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    AWS
+                    aws.withRegistry('','aws') {
+                        echo 'tttttttttttttttttttttttt'
+                    }
                 }
             }
         }
