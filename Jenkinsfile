@@ -28,8 +28,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    withCredentials('aws') {
-                        echo 'tttttttttttttttttttttttt'
+                    withCredentials([file(credentialsId: 'aws', variable: 'FILE')]) {
+                        echo 'tttttttttttttttttttttttt $FILE'
                     }
                 }
             }
