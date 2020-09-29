@@ -25,7 +25,7 @@ pipeline {
                 }
             }
         }
-        stage('Build') {
+        stage('Deploy') {
             steps {
                 script {
                     aws ecs --help
